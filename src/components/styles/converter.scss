@@ -33,6 +33,10 @@
             animation: section-other-in both .35s .4s;
         }
 
+        &--inited {
+            animation-delay: 0s;
+        }
+
         &__input-wrapper {
             margin-bottom: .25em;
             max-width: 11em;

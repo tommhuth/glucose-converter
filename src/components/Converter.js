@@ -1,22 +1,28 @@
 import "./styles/converter.scss"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import DropIcon from "./DropIcon"
 import MeasureType from "../const/MeasureType"
+import cm from "classnames"
 
 export default function Converter() {
     let [defaultValue, setDefaultValue] = useState(4.1)
     let [otherValue, setOtherValue] = useState(70)
     let [reversed, setReversed] = useState(false)
+    let [inited, setInited] = useState(false)
     let defaultElement = (
-        <div className="converter__section converter__section--default">
+        <div
+            className={cm("converter__section", "converter__section--default", {
+                "converter__section--inited": inited
+            })}
+        >
             <span className="converter__section__input-wrapper">
                 <input
                     type="text"
                     inputMode="decimal"
                     id={MeasureType.MMOL_L}
                     className="converter__section__input-wrapper__input"
-                    value={typeof defaultValue === "string" ? defaultValue: defaultValue.toFixed(1)}
+                    value={typeof defaultValue === "string" ? defaultValue : defaultValue.toFixed(1)}
                     onChange={e => setDefaultValue((e.target.value))}
                     onBlur={(e) => {
                         setOtherValue(parseFloat(e.target.value) * 17)
@@ -32,7 +38,11 @@ export default function Converter() {
         </div>
     )
     let otherElement = (
-        <div className="converter__section converter__section--other">
+        <div
+            className={cm("converter__section", "converter__section--other", {
+                "converter__section--inited": inited
+            })}
+        >
             <span className="converter__section__input-wrapper">
                 <input
                     type="text"
@@ -54,6 +64,10 @@ export default function Converter() {
             </label>
         </div>
     )
+
+    useEffect(() => {
+        setTimeout(() => setInited(true), 750)
+    }, [])
 
     return (
         <div className="converter">
