@@ -21,12 +21,11 @@ ReactDOM.render(
 )
 
 
-if (Config.REGISTER_SERVICEWORKER || true) {
+if (Config.REGISTER_SERVICEWORKER) {
     let worker = new Workbox("/serviceworker.js")
-      
-    // use this to trigger any "update is avail" message somewhere
+       
     worker.addEventListener("installed", e => {
-        console.log("SW installed - update = ", e.isUpdate || false)
+        console.log("SW " + (e.isUpdate ? "updated" : "installed"))
     })
     worker.register()
 }
