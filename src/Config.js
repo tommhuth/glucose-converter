@@ -1,3 +1,3 @@
 export default {
-    REGISTER_SERVERWORKER: process.env.REGISTER_SERVERWORKER === "true"
+    REGISTER_SERVICEWORKER: process.env.REGISTER_SERVICEWORKER === "true"
 }
