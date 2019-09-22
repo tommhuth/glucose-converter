@@ -13,6 +13,7 @@ export default function Converter() {
             <span className="converter__section__input-wrapper">
                 <input
                     type="text"
+                    inputMode="decimal"
                     id={MeasureType.MMOL_L}
                     className="converter__section__input-wrapper__input"
                     value={typeof defaultValue === "string" ? defaultValue: defaultValue.toFixed(1)}
@@ -36,6 +37,7 @@ export default function Converter() {
                 <input
                     type="text"
                     id={MeasureType.MG_DL}
+                    inputMode="numeric"
                     className="converter__section__input-wrapper__input"
                     value={otherValue.toFixed(0)}
                     onChange={e => setOtherValue(parseFloat(e.target.value))}
