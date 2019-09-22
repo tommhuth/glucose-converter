@@ -3,7 +3,7 @@ import "./styles/converter.scss"
 import React, { useState, useEffect } from "react"
 import DropIcon from "./DropIcon"
 import MeasureType from "../const/MeasureType"
-import cm from "classnames"
+import cn from "classnames"
 
 export default function Converter() {
     let [defaultValue, setDefaultValue] = useState(4.1)
@@ -12,7 +12,7 @@ export default function Converter() {
     let [inited, setInited] = useState(false)
     let defaultElement = (
         <div
-            className={cm("converter__section", "converter__section--default", {
+            className={cn("converter__section", "converter__section--default", {
                 "converter__section--inited": inited
             })}
         >
@@ -39,7 +39,7 @@ export default function Converter() {
     )
     let otherElement = (
         <div
-            className={cm("converter__section", "converter__section--other", {
+            className={cn("converter__section", "converter__section--other", {
                 "converter__section--inited": inited
             })}
         >
