@@ -5,8 +5,10 @@ const HtmlWebpackPlugin = require("html-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const WebpackPwaManifest = require("webpack-pwa-manifest")
+const CopyWebpackPlugin = require("copy-webpack-plugin")
 const { InjectManifest } = require("workbox-webpack-plugin")
 
+const rev = uuid.v4()
 const plugins = [
     new CleanWebpackPlugin(),
     new webpack.DefinePlugin({
@@ -17,11 +19,20 @@ const plugins = [
     }),
     new HtmlWebpackPlugin({
         template: path.join(__dirname, "assets/views", "index.html"),
-        filename: "index.html"
+        filename: "index.html",
+        rev
     }),
+    new CopyWebpackPlugin(
+        [
+            {
+                from: path.join(__dirname, "assets", "splashscreens"),
+                to: "images/[name]." + rev + ".[ext]"
+            }
+        ]
+    ),
     new WebpackPwaManifest({
         name: "Glucose measurement converter",
-        short_name: "Glucose converter",
+        short_name: "Converter",
         background_color: "#EDF3F9",
         theme_color: "#39707F",
         orientation: "portrait",
