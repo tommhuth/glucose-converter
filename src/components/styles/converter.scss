@@ -55,6 +55,10 @@
                 font-size: 4.65em;
                 height: 1em;
                 font-weight: 500; 
+
+                &:disabled {
+                    opacity: 1;
+                }
             }
         }
 

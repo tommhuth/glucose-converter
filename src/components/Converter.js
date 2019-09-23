@@ -3,66 +3,38 @@ import "./styles/converter.scss"
 import React, { useState, useEffect } from "react"
 import DropIcon from "./DropIcon"
 import MeasureType from "../const/MeasureType"
-import cn from "classnames"
+import ConverterElement from "./ConverterElement"
 
 export default function Converter() {
     let [defaultValue, setDefaultValue] = useState(4.1)
     let [otherValue, setOtherValue] = useState(70)
+    let [defaultValueAddition, setDefaultValueAddition] = useState(0)
+    let [otherValueAddition, setOtherValueAddition] = useState(0)
     let [reversed, setReversed] = useState(false)
     let [inited, setInited] = useState(false)
     let defaultElement = (
-        <div
-            className={cn("converter__section", "converter__section--default", {
-                "converter__section--inited": inited
-            })}
-        >
-            <span className="converter__section__input-wrapper">
-                <input
-                    type="text"
-                    inputMode="decimal"
-                    id={MeasureType.MMOL_L}
-                    className="converter__section__input-wrapper__input"
-                    value={typeof defaultValue === "string" ? defaultValue : defaultValue.toFixed(1)}
-                    onChange={e => setDefaultValue((e.target.value))}
-                    onBlur={(e) => {
-                        setOtherValue(parseFloat(e.target.value) * 17)
-                    }}
-                />
-            </span>
-            <label
-                htmlFor={MeasureType.MMOL_L}
-                className="converter__section__unit"
-            >
-                {MeasureType.MMOL_L}
-            </label>
-        </div>
+        <ConverterElement
+            inited={inited}
+            inputMode="decimal"
+            max={12} 
+            value={(parseFloat(defaultValue) + defaultValueAddition).toFixed(1).replace(".0", "")}
+            type={MeasureType.MMOL_L}
+            onBlur={value => setOtherValue(parseFloat(value) * 17)}
+            onChange={value => setDefaultValue((value))}
+            onAdditionChange={value => setDefaultValueAddition(value)}
+        />
     )
     let otherElement = (
-        <div
-            className={cn("converter__section", "converter__section--other", {
-                "converter__section--inited": inited
-            })}
-        >
-            <span className="converter__section__input-wrapper">
-                <input
-                    type="text"
-                    id={MeasureType.MG_DL}
-                    inputMode="numeric"
-                    className="converter__section__input-wrapper__input"
-                    value={otherValue.toFixed(0)}
-                    onChange={e => setOtherValue(parseFloat(e.target.value))}
-                    onBlur={(e) => {
-                        setDefaultValue(parseFloat(e.target.value) / 17)
-                    }}
-                />
-            </span>
-            <label
-                htmlFor={MeasureType.MG_DL}
-                className="converter__section__unit"
-            >
-                {MeasureType.MG_DL}
-            </label>
-        </div>
+        <ConverterElement
+            inited={inited}
+            inputMode="numeric" 
+            max={150}
+            value={(otherValue + otherValueAddition).toFixed(0)}
+            type={MeasureType.MG_DL}
+            onBlur={value => setDefaultValue(parseFloat(value) / 17)}
+            onChange={value => setOtherValue(parseFloat(value))}
+            onAdditionChange={value => setOtherValueAddition(value)}
+        />
     )
 
     useEffect(() => {
@@ -85,4 +57,4 @@ export default function Converter() {
             {reversed ? <>{otherElement}{defaultElement}</> : <>{defaultElement}{otherElement}</>}
         </div>
     )
-}
+} 
