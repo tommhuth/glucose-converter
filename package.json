@@ -1,6 +1,10 @@
 {
     "name": "measure",
     "version": "0.0.0",
+    "sideEffects": [
+        "*.scss",
+        "core-js/stable"
+    ],
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -15,6 +19,7 @@
         "@babel/plugin-proposal-class-properties": "^7.5.5",
         "@babel/preset-env": "^7.6.0",
         "@babel/preset-react": "^7.0.0",
+        "@huth/utils": "^1.0.1",
         "babel-eslint": "^10.0.3",
         "babel-loader": "^8.0.6",
         "classnames": "^2.2.6",
@@ -39,6 +44,7 @@
         "serve-static": "^1.14.1",
         "uuid": "^3.3.3",
         "webpack": "^4.40.2",
+        "webpack-bundle-analyzer": "^3.5.1",
         "webpack-cli": "^3.3.9",
         "webpack-pwa-manifest": "^4.0.0",
         "workbox-webpack-plugin": "^4.3.1",

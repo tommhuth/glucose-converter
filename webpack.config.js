@@ -7,6 +7,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const WebpackPwaManifest = require("webpack-pwa-manifest")
 const CopyWebpackPlugin = require("copy-webpack-plugin")
 const { InjectManifest } = require("workbox-webpack-plugin")
+//const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin
 
 const rev = uuid.v4()
 const plugins = [
@@ -64,7 +65,8 @@ const plugins = [
         templatedURLs: {
             "/": uuid.v4()
         }
-    })
+    }),
+    //new BundleAnalyzerPlugin()
 ]
 
 module.exports = {
@@ -86,7 +88,7 @@ module.exports = {
             { test: /\.json$/, loader: "json" },
             {
                 test: /\.js$/,
-                exclude: /(node_modules)/,
+                exclude: /node_modules\/(?!(@huth\/utils)\/).*/,
                 loader: "babel-loader"
             },
             {

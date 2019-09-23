@@ -3,15 +3,18 @@ import "./styles/converter.scss"
 import React, { useState, useEffect } from "react"
 import DropIcon from "./DropIcon"
 import MeasureType from "../const/MeasureType"
+import { LocalStorage } from "@huth/utils"
 import ConverterElement from "./ConverterElement"
+import Config from "../Config"
 
 export default function Converter() {
     let [defaultValue, setDefaultValue] = useState(4.2)
     let [otherValue, setOtherValue] = useState(71)
     let [defaultValueAddition, setDefaultValueAddition] = useState(0)
     let [otherValueAddition, setOtherValueAddition] = useState(0)
-    let [reversed, setReversed] = useState(false)
+    let [reversed, setReversed] = useState(LocalStorage.get(Config.REVERSED_KEY) || false)
     let [inited, setInited] = useState(false)
+
     let defaultElement = (
         <ConverterElement
             inited={inited}
@@ -45,7 +48,10 @@ export default function Converter() {
                 <button
                     className="converter__settings__reverse"
                     type="button"
-                    onClick={() => setReversed(prev => !prev)}
+                    onClick={() => {
+                        setReversed(prev => !prev)
+                        LocalStorage.set(Config.REVERSED_KEY, !reversed)
+                    }}
                 >
                     <span className="visually-hidden">Reverse</span>
                     <DropIcon />
