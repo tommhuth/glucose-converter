@@ -13,7 +13,7 @@ ReactDOM.render(
     <>
         <h1 className="visually-hidden">Blood sugar measurement converter</h1>
         <p className="visually-hidden">Convert between <em>mmol/L</em> and <em>mg/dL</em>.</p>
-        <p className="visually-hidden">The international standard way of measuring blood glucose levels is in terms of a molar concentration, measured in mmol/L (millimoles per litre; or millimolar, abbreviated mM). In the United States, Germany and other countries mass concentration is measured in mg/dL (milligrams per decilitre).</p>
+        <p className="visually-hidden">The international standard way of measuring blood glucose levels is in terms of a molar concentration, measured in mmol/L (millimoles per litre; or millimolar, abbreviated mM). In the United States, Germany and other countries mass concentration is measured in mg/dL (milligrams per decilitre). <a href="https://en.wikipedia.org/wiki/Blood_sugar_level">See Wikipedia article</a></p>
         
         <Converter />
     </>,
