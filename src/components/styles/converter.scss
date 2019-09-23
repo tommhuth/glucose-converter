@@ -1,5 +1,10 @@
 .converter {
     text-align: center;
+    position: fixed;
+    top:0;
+    bottom: 0;
+    right:0;
+    left:0;
 
     &__settings {
         top: 50%;
@@ -16,7 +21,7 @@
     }
 
     &__section {
-        height: 50vh;
+        height: 50%;
         display: flex;
         text-align: center;
         flex-direction: column;
@@ -38,7 +43,7 @@
         }
 
         &__input-wrapper {
-            margin-bottom: .25em;
+            margin-bottom: .35em;
             max-width: 11em;
             overflow: hidden;
             display: block;
@@ -48,6 +53,7 @@
                 letter-spacing: -.0251em;
                 text-align: center;
                 font-size: 4.65em;
+                height: 1em;
                 font-weight: 500; 
             }
         }

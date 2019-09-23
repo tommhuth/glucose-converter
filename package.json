@@ -6,6 +6,7 @@
     "scripts": {
         "dev": "yarn start & webpack --watch --mode development --config webpack.config.js",
         "start": "node server.js",
+        "ngrok": "ngrok http 3000 -host-header=\"localhost:3000\"",
         "build": "webpack --mode production --config webpack.config.js"
     },
     "dependencies": {
