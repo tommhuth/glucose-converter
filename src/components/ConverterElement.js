@@ -5,8 +5,7 @@ import cn from "classnames"
 import MeasureType from "../const/MeasureType"
 
 export default function ConverterElement({
-    inited = false,
-    inputMode = "decimal",
+    inited = false, 
     max = 100,
     onChange = () => { },
     onBlur = () => { },
@@ -47,13 +46,13 @@ export default function ConverterElement({
             <span className="converter__section__input-wrapper">
                 <input
                     type="text"
-                    inputMode={inputMode}
+                    inputMode={type === MeasureType.MMOL_L ? "decimal" : "numeric"}
                     id={type}
                     disabled={isMoving}
                     className="converter__section__input-wrapper__input"
                     value={parseFloat(value) > 0 ? value : 0}
-                    onChange={e => onChange(parseFloat(e.target.value))}
-                    onBlur={e => onBlur(parseFloat(e.target.value))}
+                    onChange={e => onChange((e.target.value))}
+                    onBlur={e => onBlur((e.target.value))}
                 />
             </span>
             <label

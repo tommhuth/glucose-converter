@@ -6,8 +6,8 @@ import MeasureType from "../const/MeasureType"
 import ConverterElement from "./ConverterElement"
 
 export default function Converter() {
-    let [defaultValue, setDefaultValue] = useState(4.1)
-    let [otherValue, setOtherValue] = useState(70)
+    let [defaultValue, setDefaultValue] = useState(4.2)
+    let [otherValue, setOtherValue] = useState(71)
     let [defaultValueAddition, setDefaultValueAddition] = useState(0)
     let [otherValueAddition, setOtherValueAddition] = useState(0)
     let [reversed, setReversed] = useState(false)
@@ -15,20 +15,18 @@ export default function Converter() {
     let defaultElement = (
         <ConverterElement
             inited={inited}
-            inputMode="decimal"
-            max={12} 
+            max={6}
             value={(parseFloat(defaultValue) + defaultValueAddition).toFixed(1).replace(".0", "")}
             type={MeasureType.MMOL_L}
             onBlur={value => setOtherValue(parseFloat(value) * 17)}
-            onChange={value => setDefaultValue((value))}
+            onChange={value => setDefaultValue(parseFloat(value))}
             onAdditionChange={value => setDefaultValueAddition(value)}
         />
     )
     let otherElement = (
         <ConverterElement
             inited={inited}
-            inputMode="numeric" 
-            max={150}
+            max={120}
             value={(otherValue + otherValueAddition).toFixed(0)}
             type={MeasureType.MG_DL}
             onBlur={value => setDefaultValue(parseFloat(value) / 17)}
