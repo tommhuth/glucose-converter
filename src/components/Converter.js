@@ -29,7 +29,7 @@ export default function Converter() {
     let otherElement = (
         <ConverterElement
             inited={inited}
-            max={120}
+            max={80}
             value={(otherValue + otherValueAddition).toFixed(0)}
             type={MeasureType.MG_DL}
             onBlur={value => setDefaultValue(parseFloat(value) / 17)}
