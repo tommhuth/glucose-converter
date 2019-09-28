@@ -53,7 +53,7 @@ export default function Converter() {
                         LocalStorage.set(Config.REVERSED_KEY, !reversed)
                     }}
                 >
-                    <span className="visually-hidden">Reverse</span>
+                    <span className="visually-hidden">Reverse order</span>
                     <DropIcon />
                 </button>
             </div>
