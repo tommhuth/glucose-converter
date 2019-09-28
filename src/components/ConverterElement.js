@@ -1,4 +1,4 @@
-import "./styles/converter.scss"
+import "./styles/converter-element.scss"
 
 import React, { useState } from "react"
 import cn from "classnames"
@@ -18,10 +18,10 @@ export default function ConverterElement({
 
     return (
         <div
-            className={cn("converter__section", {
-                "converter__section--inited": inited,
-                "converter__section--other": type === MeasureType.MG_DL,
-                "converter__section--default": type === MeasureType.MMOL_L
+            className={cn("converter-element", {
+                "converter-element--inited": inited,
+                "converter-element--other": type === MeasureType.MG_DL,
+                "converter-element--default": type === MeasureType.MMOL_L
             })}
             onTouchStart={e => setX(e.changedTouches[0].pageX)}
             onTouchMove={e => {
@@ -43,13 +43,13 @@ export default function ConverterElement({
                 setIsMoving(false)
             }}
         >
-            <span className="converter__section__input-wrapper">
+            <span className="converter-element__input-wrapper">
                 <input
                     type="text"
                     inputMode={type === MeasureType.MMOL_L ? "decimal" : "numeric"}
                     id={type}
                     disabled={isMoving}
-                    className="converter__section__input-wrapper__input"
+                    className="converter-element__input"
                     value={parseFloat(value) > 0 ? value : 0}
                     onChange={e => onChange((e.target.value))}
                     onBlur={e => onBlur((e.target.value))}
@@ -57,7 +57,7 @@ export default function ConverterElement({
             </span>
             <label
                 htmlFor={type}
-                className="converter__section__unit"
+                className="converter-element__unit"
             >
                 {type}
             </label>

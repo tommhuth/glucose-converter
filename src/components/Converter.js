@@ -58,7 +58,9 @@ export default function Converter() {
                 </button>
             </div>
 
-            {reversed ? <>{otherElement}{defaultElement}</> : <>{defaultElement}{otherElement}</>}
+            <div className="converter__elements">
+                {reversed ? <>{otherElement}{defaultElement}</> : <>{defaultElement}{otherElement}</>}
+            </div>
         </div>
     )
 } 
