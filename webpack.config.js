@@ -32,7 +32,7 @@ const plugins = [
         ]
     ),
     new WebpackPwaManifest({
-        name: "Blood glucose monitoring converter",
+        name: "Blood glucose unit converter",
         short_name: "Converter",
         background_color: "#EDF3F9",
         theme_color: "#39707F",
