@@ -20,7 +20,7 @@
         "@babel/plugin-proposal-class-properties": "^7.5.5",
         "@babel/preset-env": "^7.6.0",
         "@babel/preset-react": "^7.0.0",
-        "@huth/utils": "^1.0.1",
+        "@huth/utils": "^2.0.1",
         "autoprefixer": "^9.6.1",
         "babel-eslint": "^10.0.3",
         "babel-loader": "^8.0.6",
